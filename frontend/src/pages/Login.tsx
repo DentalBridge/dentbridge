@@ -140,22 +140,43 @@ const Login = () => {
 
           {/* 🔵 ADD YOUR CUSTOM MESSAGE HERE 🔵 */}
           {/* Simply uncomment below and edit the text */}
-          {/*
+          {
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center flex-shrink-0">
                 <Heart className="w-6 h-6 text-white" />
               </div>
-              <div>
-                <p className="text-sm mb-2 italic">
-                  "Your custom message goes here - testimonial or marketing text!"
-                </p>
-                <p className="text-sm font-semibold">Your Name Here</p>
-                <p className="text-xs text-blue-100">Your Clinic Name & Location</p>
-              </div>
+             <div>
+               <p className="text-sm mb-2 italic">
+                 Reach us at:
+               </p>
+
+               <p className="text-sm mb-1 italic">
+                 <a href="mailto:appointments@dentbridgehealthcare.com" className="hover:underline">
+                   appointments@dentbridgehealthcare.com
+                 </a>
+               </p>
+
+               <p className="text-sm mb-2 italic">
+                 <a href="mailto:founder@dentbridgehealthcare.com" className="hover:underline">
+                   founder@dentbridgehealthcare.com
+                 </a>,{" "}
+                 <a href="mailto:help@dentbridgehealthcare.com" className="hover:underline">
+                   help@dentbridgehealthcare.com
+                 </a>,{" "}
+                 <a href="mailto:raghavendra@dentbridgehealthcare.com" className="hover:underline">
+                   raghavendra@dentbridgehealthcare.com
+                 </a>
+               </p>
+
+               <p className="text-sm font-semibold">Raghavendra</p>
+               <p className="text-xs text-blue-100">
+                 Rajajinagar, Bengaluru North
+               </p>
+             </div>
             </div>
           </div>
-          */}
+          }
         </div>
       </div>
 
