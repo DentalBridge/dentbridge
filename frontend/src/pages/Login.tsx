@@ -163,15 +163,13 @@ const Login = () => {
                  </a>,{" "}
                  <a href="mailto:help@dentbridgehealthcare.com" className="hover:underline">
                    help@dentbridgehealthcare.com
-                 </a>,{" "}
-                 <a href="mailto:raghavendra@dentbridgehealthcare.com" className="hover:underline">
-                   raghavendra@dentbridgehealthcare.com
                  </a>
+
                </p>
 
                <p className="text-sm font-semibold">Raghavendra</p>
                <p className="text-xs text-blue-100">
-                 Rajajinagar, Bengaluru North
+                 Rajajinagar, Bengaluru
                </p>
              </div>
             </div>
