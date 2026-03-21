@@ -12,7 +12,6 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
-import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -40,14 +39,11 @@ public class SecurityConfig {
                     "/",
                     "/index.html",
                     "/assets/**",
-                    "/**/*.js",
-                    "/**/*.css",
-                    "/**/*.png",
-                    "/**/*.jpg",
-                    "/**/*.svg",
+                    "/favicon.ico",
                     "/api/auth/**",
                     "/actuator/health"
                 ).permitAll()
+
                 .anyRequest().authenticated()
             )
                 .authenticationProvider(authenticationProvider())
@@ -72,16 +68,5 @@ public class SecurityConfig {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
-    }
-    @Bean
-    public WebSecurityCustomizer webSecurityCustomizer() {
-        return (web) -> web.ignoring().requestMatchers(
-            "/assets/**",
-            "/**/*.js",
-            "/**/*.css",
-            "/**/*.png",
-            "/**/*.jpg",
-            "/**/*.svg"
-        );
     }
 }
