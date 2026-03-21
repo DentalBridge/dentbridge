@@ -12,6 +12,7 @@ import org.springframework.security.config.annotation.authentication.configurati
 import org.springframework.security.config.annotation.method.configuration.EnableMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
+import org.springframework.security.config.annotation.web.configuration.WebSecurityCustomizer;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -34,19 +35,21 @@ public class SecurityConfig {
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(cors -> cors.configure(http))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
-                .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/","/api/auth/**", "/actuator/health",
-                            "/index.html",
-                            "/assets/**",
-                            "/**/*.js",
-                            "/**/*.css",
-                            "/**/*.png",
-                            "/**/*.jpg",
-                            "/**/*.svg",
-                            "/favicon.ico",
-                            "./").permitAll()
-                        .anyRequest().authenticated()
-                )
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/",
+                    "/index.html",
+                    "/assets/**",
+                    "/**/*.js",
+                    "/**/*.css",
+                    "/**/*.png",
+                    "/**/*.jpg",
+                    "/**/*.svg",
+                    "/api/auth/**",
+                    "/actuator/health"
+                ).permitAll()
+                .anyRequest().authenticated()
+            )
                 .authenticationProvider(authenticationProvider())
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class);
 
@@ -70,5 +73,15 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
+    @Bean
+    public WebSecurityCustomizer webSecurityCustomizer() {
+        return (web) -> web.ignoring().requestMatchers(
+            "/assets/**",
+            "/**/*.js",
+            "/**/*.css",
+            "/**/*.png",
+            "/**/*.jpg",
+            "/**/*.svg"
+        );
+    }
 }
