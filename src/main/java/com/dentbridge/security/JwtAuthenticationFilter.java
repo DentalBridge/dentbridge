@@ -29,6 +29,17 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
                                     HttpServletResponse response,
                                     FilterChain filterChain) throws ServletException, IOException {
         try {
+            String path = request.getServletPath();
+
+            if (path.startsWith("/assets") ||
+                path.equals("/vite.svg") ||
+                path.equals("/favicon.ico") ||
+                path.equals("/") ||
+                path.equals("/index.html")) {
+
+                filterChain.doFilter(request, response);
+                return;
+            }
             String jwt = getJwtFromRequest(request);
 
             if (StringUtils.hasText(jwt) && tokenProvider.validateToken(jwt)) {
