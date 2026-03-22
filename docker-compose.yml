@@ -56,7 +56,7 @@ services:
       context: ./frontend
       dockerfile: ../Dockerfile.frontend
       args:
-        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-http://localhost:8080/api}
+        VITE_API_BASE_URL: ${VITE_API_BASE_URL:-https://dentbridgehealthcare.com/api}
     container_name: dentbridge-frontend
     ports:
       - "3000:80"
