@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
 import Logo from '../components/Logo';
-import { Mail, Lock, ArrowRight, Shield, Clock, Award, Users, Sparkles, Heart } from 'lucide-react';
+import { Mail, Lock, ArrowRight, Shield, Clock, Award, Users, Sparkles} from 'lucide-react';
 
 const Login = () => {
   const [email, setEmail] = useState('');
@@ -144,7 +144,6 @@ const Login = () => {
           <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-6 border border-white/20">
             <div className="flex items-start gap-4">
               <div className="w-12 h-12 bg-gradient-to-br from-blue-400 to-cyan-400 rounded-full flex items-center justify-center flex-shrink-0">
-                <Heart className="w-6 h-6 text-white" />
               </div>
              <div>
                <p className="text-sm mb-2 italic">
